@@ -1,0 +1,36 @@
+@import '/node_modules/modern-normalize/modern-normalize.css';
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,italic,700,700italic);
+
+:root {
+  --font-size: 16px;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #eee;
+  min-width: 320px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: var(--font-size);
+}
+
+#app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#app > main {
+  flex: 1 1 auto;
+}
+
+#app > * {
+  min-width: 0;
+}
