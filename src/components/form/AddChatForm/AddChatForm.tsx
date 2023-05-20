@@ -17,7 +17,8 @@ const AddChatForm: React.FC<IAddChatFormProps> = ({ setIsModalOpen }) => {
 
     const chat: IChat = {
       id: Date.now(),
-      phone: phoneValue.trim()
+      phone: phoneValue.trim(),
+      messages: []
     };
     dispatch(addChat(chat));
     setIsModalOpen(false);

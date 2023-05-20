@@ -9,7 +9,9 @@ function App() {
     <>
       <Sidebar />
       <Main />
-      <Modal show={!useAppSelector(state => state.auth.isAuth)}>
+      <Modal
+        closable={false}
+        show={!useAppSelector(state => state.auth.isAuth)}>
         <LoginForm />
       </Modal>
     </>

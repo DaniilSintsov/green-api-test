@@ -1,17 +1,20 @@
 import { useAppSelector } from '../../hooks/useAppSelector/useAppSelector.hook';
+import { useCurrentChat } from '../../hooks/useCurrentChat/useCurrentChat';
+import MessageList from '../MessageList/MessageList';
 import MessageForm from '../form/MessageForm/MessageForm';
 import classes from './ChatBlock.module.css';
 
 const ChatBlock = () => {
-  const currentChat = useAppSelector(state => state.chats.currentChat);
+  const curChat = useCurrentChat();
 
   return (
     <>
-      {currentChat ? (
+      {useAppSelector(state => state.chats.currentChatId) && curChat ? (
         <div className={classes.chatBlock}>
           <div className={classes.chatBlock__title}>
-            Переписка с {currentChat.phone}
+            Переписка с {curChat.phone}
           </div>
+          <MessageList />
           <MessageForm />
         </div>
       ) : (

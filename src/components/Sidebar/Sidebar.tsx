@@ -16,7 +16,9 @@ const Sidebar = () => {
         onClick={() => setIsModalOpen(true)}>
         Добавить чат
       </button>
-      <Modal show={isModalOpen}>
+      <Modal
+        show={isModalOpen}
+        setIsModalOpen={setIsModalOpen}>
         <AddChatForm setIsModalOpen={setIsModalOpen} />
       </Modal>
     </aside>
