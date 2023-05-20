@@ -29,6 +29,8 @@ const LoginForm = () => {
         apiTokenInstance: apiTokenInstanceValue
       })
     );
+    setIdInstanceValue('');
+    setApiTokenInstanceValue('');
   };
 
   return (

@@ -1,0 +1,23 @@
+.main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoBar {
+  background: var(--bg-color);
+  display: flex;
+  gap: var(--offset);
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--offset);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.infoBar__title {
+  font-size: 20px;
+}
+
+.infoBar__btn {
+  flex: 0 0 auto;
+}
