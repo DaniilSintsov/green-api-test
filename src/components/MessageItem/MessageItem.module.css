@@ -1,0 +1,15 @@
+.message {
+  max-width: 400px;
+  padding: var(--offset);
+  border-radius: var(--offset);
+  border: 1px solid var(--border-color);
+}
+
+.own {
+  align-self: flex-end;
+}
+
+.notOwn {
+  background: var(--bg-color);
+  align-self: flex-start;
+}

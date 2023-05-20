@@ -1,0 +1,21 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input:not(:last-child) {
+  margin-bottom: var(--offset);
+}
+
+.input__field {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--offset);
+  padding: var(--offset);
+}
+
+.input__field:focus {
+  border: 1px solid var(--focus-color);
+}

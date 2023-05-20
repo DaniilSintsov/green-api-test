@@ -1,0 +1,10 @@
+.chatItem {
+  padding: var(--offset);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chatItem:not(:last-child) {
+  margin-bottom: var(--offset);
+  border-bottom: 1px solid var(--border-color);
+}

@@ -1,0 +1,15 @@
+.sidebar {
+  flex: 0 1 300px;
+  background: var(--bg-color);
+  border-right: 1px solid var(--border-color);
+  padding: var(--offset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--offset);
+}
+
+.sidebar__title {
+  font-size: 30px;
+  padding-bottom: var(--offset);
+  border-bottom: 1px solid var(--border-color);
+}

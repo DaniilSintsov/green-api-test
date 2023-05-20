@@ -3,6 +3,10 @@
 
 :root {
   --font-size: 16px;
+  --offset: 10px;
+  --bg-color: #ddd;
+  --border-color: #ccc;
+  --focus-color: #999;
 }
 
 * {
@@ -20,17 +24,24 @@ body {
   font-size: var(--font-size);
 }
 
-#app {
+#root {
   min-height: 100%;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 
-#app > main {
-  flex: 1 1 auto;
+#root > * {
+  min-width: 0;
 }
 
-#app > * {
-  min-width: 0;
+.btn {
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--offset);
+  padding: var(--offset);
+}
+
+.btn:focus {
+  border: 1px solid var(--focus-color);
 }
