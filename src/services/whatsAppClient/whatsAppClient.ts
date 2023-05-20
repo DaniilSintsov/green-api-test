@@ -5,8 +5,21 @@ interface ISendable {
   message: string;
 }
 
+interface IReceivable {
+  idInstance: string;
+  apiTokenInstance: string;
+}
+
+interface IDeletable {
+  idInstance: string;
+  apiTokenInstance: string;
+  receiptId: string;
+}
+
 interface IWhatsAppClient {
   sendMessage: (obj: ISendable) => void;
+  receiveNotification: (obj: IReceivable) => void;
+  deleteNotification: (obj: IDeletable) => void;
 }
 
 class WhatsAppClient implements IWhatsAppClient {
@@ -34,6 +47,31 @@ class WhatsAppClient implements IWhatsAppClient {
           chatId: chatId,
           message: message
         })
+      }
+    );
+    return await res.json();
+  }
+
+  async receiveNotification({ idInstance, apiTokenInstance }: IReceivable) {
+    const res = await fetch(
+      `${this._apiBase}/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`,
+      {
+        headers: this._headers
+      }
+    );
+    return await res.json();
+  }
+
+  async deleteNotification({
+    idInstance,
+    apiTokenInstance,
+    receiptId
+  }: IDeletable) {
+    const res = await fetch(
+      `${this._apiBase}/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${receiptId}`,
+      {
+        method: 'DELETE',
+        headers: this._headers
       }
     );
     return await res.json();

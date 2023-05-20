@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '..';
 
 export interface IMessage {
   text: string;
@@ -19,7 +18,7 @@ interface IChatsState {
 }
 
 interface ISentData {
-  chat: IChat;
+  chatId: number;
   message: IMessage;
 }
 
@@ -43,9 +42,15 @@ export const chatsSlice = createSlice({
       state.chatList = [];
     },
     addMessage: (state, data: PayloadAction<ISentData>) => {
-      state.chatList
-        .find(chat => chat.id === data.payload.chat.id)
-        ?.messages.push(data.payload.message);
+      const curChat = state.chatList.find(
+        chat => chat.id === data.payload.chatId
+      );
+
+      if (curChat?.messages.find(msg => msg.id === data.payload.message.id)) {
+        return;
+      }
+
+      curChat?.messages.push(data.payload.message);
     }
   }
 });
