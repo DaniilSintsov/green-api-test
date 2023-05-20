@@ -1,0 +1,12 @@
+.form {
+  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+  padding: var(--offset);
+  display: flex;
+  align-items: end;
+  gap: var(--offset);
+}
+
+.input {
+  flex: 1 0 auto;
+}

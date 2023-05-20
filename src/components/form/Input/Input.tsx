@@ -6,7 +6,8 @@ const Input: React.FC<IInputProps> = ({
   type,
   labelText,
   value,
-  onChange
+  onChange,
+  pattern
 }) => {
   return (
     <div className={classes.input}>
@@ -15,14 +16,26 @@ const Input: React.FC<IInputProps> = ({
         htmlFor={inputId}>
         {labelText}:
       </label>
-      <input
-        value={value}
-        required
-        onChange={e => onChange(e)}
-        className={classes.input__field}
-        id={inputId}
-        type={type}
-      />
+      {pattern ? (
+        <input
+          value={value}
+          required
+          pattern={pattern}
+          onChange={e => onChange(e)}
+          className={classes.input__field}
+          id={inputId}
+          type={type}
+        />
+      ) : (
+        <input
+          value={value}
+          required
+          onChange={e => onChange(e)}
+          className={classes.input__field}
+          id={inputId}
+          type={type}
+        />
+      )}
     </div>
   );
 };

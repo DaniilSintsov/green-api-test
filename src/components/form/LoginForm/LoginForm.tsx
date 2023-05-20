@@ -23,10 +23,18 @@ const LoginForm = () => {
 
   const onSubmitHandler = (e: React.FormEvent): void => {
     e.preventDefault();
+
+    if (
+      !idInstanceValue.trim().length ||
+      !apiTokenInstanceValue.trim().length
+    ) {
+      return;
+    }
+
     dispatch(
       setAuthorized({
-        idInstance: idInstanceValue,
-        apiTokenInstance: apiTokenInstanceValue
+        idInstance: idInstanceValue.trim(),
+        apiTokenInstance: apiTokenInstanceValue.trim()
       })
     );
     setIdInstanceValue('');
