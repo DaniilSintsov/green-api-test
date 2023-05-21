@@ -11,12 +11,9 @@ interface ICredentials {
 }
 
 const initialState: IAuthState = {
-  // isAuth: false,
-  // idInstance: '',
-  // apiTokenInstance: ''
-  isAuth: true,
-  idInstance: '1101822894',
-  apiTokenInstance: '5a49c86e952743d69a8e295104b59da01c2dbe0805e34a9ea9'
+  isAuth: false,
+  idInstance: '',
+  apiTokenInstance: ''
 };
 
 export const authSlice = createSlice({

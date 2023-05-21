@@ -1,0 +1,12 @@
+.header {
+  padding: var(--offset);
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__text {
+  font-size: 20px;
+}
