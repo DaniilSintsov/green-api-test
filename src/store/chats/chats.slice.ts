@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '..';
 
 export interface IMessage {
   text: string;
@@ -19,7 +18,7 @@ interface IChatsState {
 }
 
 interface ISentData {
-  chat: IChat;
+  chatId: number;
   message: IMessage;
 }
 
@@ -36,6 +35,11 @@ export const chatsSlice = createSlice({
       state.chatList.push(chat.payload);
       state.currentChatId = chat.payload.id;
     },
+    deleteChat: (state, chatId: PayloadAction<number>) => {
+      state.chatList = state.chatList.filter(
+        chat => chat.id !== chatId.payload
+      );
+    },
     setCurrentChatId: (state, id: PayloadAction<number>) => {
       state.currentChatId = id.payload;
     },
@@ -43,13 +47,24 @@ export const chatsSlice = createSlice({
       state.chatList = [];
     },
     addMessage: (state, data: PayloadAction<ISentData>) => {
-      state.chatList
-        .find(chat => chat.id === data.payload.chat.id)
-        ?.messages.push(data.payload.message);
+      const curChat = state.chatList.find(
+        chat => chat.id === data.payload.chatId
+      );
+
+      if (curChat?.messages.find(msg => msg.id === data.payload.message.id)) {
+        return;
+      }
+
+      curChat?.messages.push(data.payload.message);
     }
   }
 });
 
-export const { addChat, setCurrentChatId, clearChatList, addMessage } =
-  chatsSlice.actions;
+export const {
+  addChat,
+  deleteChat,
+  setCurrentChatId,
+  clearChatList,
+  addMessage
+} = chatsSlice.actions;
 export default chatsSlice.reducer;

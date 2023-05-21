@@ -1,8 +1,11 @@
 .message {
-  max-width: 400px;
+  max-width: 500px;
   padding: var(--offset);
   border-radius: var(--offset);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--focus-color);
+  display: flex;
+  flex-direction: column;
+  gap: var(--offset);
 }
 
 .own {
@@ -12,4 +15,9 @@
 .notOwn {
   background: var(--bg-color);
   align-self: flex-start;
+}
+
+.message__title {
+  font-size: 18px;
+  color: var(--focus-color);
 }

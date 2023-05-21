@@ -3,6 +3,7 @@ import { useAppSelector } from '../../../hooks/useAppSelector/useAppSelector.hoo
 import { useCurrentChat } from '../../../hooks/useCurrentChat/useCurrentChat';
 import whatsAppClient from '../../../services/whatsAppClient/whatsAppClient';
 import { IChat, addMessage } from '../../../store/chats/chats.slice';
+import { CHAT_ID_POSTFIX } from '../../constants/constants';
 import Input from '../Input/Input';
 import classes from './MessageForm.module.css';
 import { useState } from 'react';
@@ -13,7 +14,7 @@ const MessageForm = () => {
   const idInstance = useAppSelector(state => state.auth.idInstance);
   const curChat = useCurrentChat() as IChat;
   const apiTokenInstance = useAppSelector(state => state.auth.apiTokenInstance);
-  const chatId = curChat.phone + '@c.us';
+  const chatId = curChat.phone + CHAT_ID_POSTFIX;
 
   const onInputMessageHandler = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -38,14 +39,14 @@ const MessageForm = () => {
       .then(res => {
         dispatch(
           addMessage({
-            chat: curChat,
+            chatId: curChat?.id as number,
             message: { text: message.trim(), isOwn: true, id: res.idMessage }
           })
         );
       })
       .catch(err => {
-        alert('Произошла ошибка');
-        console.error(err);
+        alert('Произошла ошибка при отправке сообщения');
+        console.error('sendMessage', err);
       });
     setMessage('');
   };
