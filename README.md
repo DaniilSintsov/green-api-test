@@ -46,3 +46,7 @@ Start a local web server to preview
 ```bash
 npm run preview
 ```
+
+## Usage
+
+To use the app, you must have an account on the [Green API](https://green-api.com/). When you launch the application, you will see a modal in which you need to enter your `idInstance` and `apiTokenInstance` from your personal account. Then you can use the application
